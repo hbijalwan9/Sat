@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Janvi ❤️</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #ff4e73, #ff8fa3, #ffb3c1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-align: center;
+        color: white;
+    }
+
+    .container {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(12px);
+        padding: 45px;
+        border-radius: 25px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+        width: 90%;
+        max-width: 550px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-shadow: 0 0 15px rgba(255,255,255,0.8);
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .buttons {
+        position: relative;
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 14px 28px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin: 10px;
+        font-weight: bold;
+    }
+
+    #yesBtn {
+        background-color: #ff2e63;
+        color: white;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px #fff;
+    }
+
+    #noBtn {
+        background-color: white;
+        color: #ff2e63;
+        position: absolute;
+    }
+
+    #response {
+        margin-top: 25px;
+        font-size: 1.5rem;
+        display: none;
+        animation: pop 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes pop {
+        0% {transform: scale(0.5); opacity: 0;}
+        100% {transform: scale(1); opacity: 1;}
+    }
+
+    .heart {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: red;
+        transform: rotate(45deg);
+        animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: red;
+        border-radius: 50%;
+    }
+
+    .heart::before { top: -9px; left: 0; }
+    .heart::after { left: -9px; top: 0; }
+
+    @keyframes float {
+        0% { bottom: -10%; opacity: 1; }
+        100% { bottom: 110%; opacity: 0; transform: translateX(80px) rotate(45deg);}
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Janvi, Will You Be My Valentine? 💖</h1>
+
+    <p>
+        From the moment you came into my life, everything feels brighter, warmer, and more beautiful.  
+        Your smile makes my worst days better, and your presence makes my heart race.  
+        I don’t just want today with you… I want every tomorrow too. ❤️  
+        So Janvi… will you make me the happiest person and be my Valentine?
+    </p>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes, Always ❤️</button>
+        <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div id="response">
+        You just made my world complete, Janvi! ❤️✨
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const response = document.getElementById("response");
+
+    // No button runs away
+    noBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * 250 - 125;
+        const y = Math.random() * 200 - 100;
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Yes button click
+    yesBtn.addEventListener("click", () => {
+        response.style.display = "block";
+        createHearts(30);
+    });
+
+    function createHearts(num) {
+        for (let i = 0; i < num; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+    }
+</script>
+
+</body>
+</html>
